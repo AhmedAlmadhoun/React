@@ -1,3 +1,5 @@
+// Signup.js
+
 import React, { useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
@@ -19,16 +21,15 @@ function Signup() {
     e.preventDefault();
 
     try {
-      const response = await axios.post("http://localhost:8000/signup", {
-        email,
-        password,
+      const response = await axios.post("http://localhost:3001/register", {
+        user: email,
+        pwd: password,
       });
 
-      if (response.data === "exist") {
+      if (response.data.success) {
+        navigate("/ScrollingCards", { state: { id: email } });
+      } else {
         alert("User already exists");
-      } else if (response.data === "notexist") {
-        // Assuming you want to navigate to "/home" after successful signup
-        navigate("/home", { state: { id: email } });
       }
     } catch (error) {
       alert("Wrong details");
@@ -70,8 +71,7 @@ function Signup() {
             />
           </div>
           <div className="text-center">
-            <button 
-            onClick={onSubmit}
+            <button
               type="submit"
               className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600"
             >
@@ -80,7 +80,7 @@ function Signup() {
           </div>
         </form>
         <p className="text-center mt-4">
-          Don't have an account? <Link to="/">Login</Link>
+          Already have an account? <Link to="/">Login</Link>
         </p>
       </div>
     </div>

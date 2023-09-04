@@ -15,25 +15,26 @@ const LoginPage = () => {
     setPassword(e.target.value);
   };
 
+
   async function onSubmit(e) {
-    e.preventDefault();
+  e.preventDefault();
 
-    try {
-      const response = await axios.post("http://localhost:8000/", {
-        email,
-        password,
-      });
+  try {
+    const response = await axios.post("http://localhost:3001/login", {
+      email,
+      password,
+    });
 
-      if (response.data === "exist") {
-        navigate("/ScrollingCards", { state: { id: email } });
-      } else if (response.data === "notexist") {
-        alert("User has not signed up");
-      }
-    } catch (error) {
-      alert("Wrong details");
-      console.error(error);
+    if (response.data === "exist") {
+      navigate("/ScrollingCards", { state: { id: email } });
+    } else if (response.data === "notexist") {
+      alert("User has not signed up");
     }
+  } catch (error) {
+    alert("Wrong details");
+    console.error(error);
   }
+}
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">

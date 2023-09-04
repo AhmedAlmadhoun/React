@@ -16,7 +16,7 @@ const ScrollingCards = () => {
       <Header />
       <div className="min-h-screen flex items-center justify-center bg-gray-100">
         <div className="bg-gray-100 p-4">
-          <div className="flex overflow-x-scroll">
+          <div className="flex overflow-x-auto">
             {data.map((entry, index) => (
               <div
                 key={index}

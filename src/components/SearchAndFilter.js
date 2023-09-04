@@ -18,6 +18,11 @@ const SearchAndFilter = () => {
       .catch((error) => console.error('Error fetching data:', error));
   }, []);
 
+  useEffect(() => {
+    // تنفيذ البحث التلقائي عند تغيير searchTerm
+    applyFilterAndSearch();
+  }, [searchTerm, filterOption]);
+
   const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);
   };

@@ -4,6 +4,7 @@ import LoginPage from './components/LoginPage';
 import ScrollingCards from './components/ScrollingCards';
 import SearchAndFilter from './components/SearchAndFilter';
 import Signup from './components/Signup';
+import Home from './components/Home';
 
 function App() {
   return (
@@ -11,7 +12,8 @@ function App() {
     <Router>
 
       <Routes>
-        <Route path="/" element={<LoginPage />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/LoginPage" element={<LoginPage />} />
         <Route path="/ScrollingCards" element={<ScrollingCards />} />
         <Route path="/SearchAndFilter" element={<SearchAndFilter />} />
         {/* <Route path="/LoginPage2" element={<LoginPage2 />} /> */}
